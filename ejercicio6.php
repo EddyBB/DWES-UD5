@@ -20,14 +20,19 @@
                 $nombreUsuario = $_POST["nombreUsuario"];
                 $contrasenya = $_POST["contrasenya"];
 
-                //encriptada
-                $contrasenya = password_verify($contrasenya,PASSWORD_DEFAULT);
-
-                $getUser = obtenerElemento($nombreUsuario);
-
-                if($getUser){
-                    $usuarioEncontrado = "El usuario ya existe";
-                };
+                $datos = getUser($nombreUsuario);
+                if($datos){
+                    $contrasenyaEncri = $datos["contrasenya"];
+                    $retorno = password_verify($contrasenya,$contrasenyaEncri);
+                    if($retorno){
+                        echo "Contraseña correcta";
+                    } else{
+                        echo "Contraseña incorrecta";
+                    }
+                } else {
+                    echo "Usuario o contraseña incorrecto/a";
+                }
+                
             }
 
         ?>

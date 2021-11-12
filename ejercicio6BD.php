@@ -3,7 +3,7 @@
     $baseDatos = "usuarios";
     $usuario = "developer";
     $pass = "developer";
-    function obtenerElemento($nombreUsuario){
+    function getUser($nombreUsuario){
         
         try {
             $conexion = new PDO("mysql:host=$GLOBALS[servidor];dbname=$GLOBALS[baseDatos]", $GLOBALS["usuario"], $GLOBALS["pass"]);
