@@ -16,15 +16,17 @@
             $nombreUsuario = "";
             $contrasenya = "";
             $cuenta_bank = "";
+            $perfil = "";
             if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $nombreUsuario = $_POST["nombreUsuario"];
                 $contrasenya = $_POST["contrasenya"];
                 $cuenta_bank = $_POST["cuenta_bank"];
+                $perfil = $_POST["perfil"];
 
                 //encriptada
                 $contrasenya = password_hash($contrasenya,PASSWORD_DEFAULT);
 
-                insertaElemento($nombreUsuario,$contrasenya,$cuenta_bank);
+                insertaElemento($nombreUsuario,$contrasenya,$cuenta_bank,$perfil);
             }
 
         ?>
@@ -34,7 +36,8 @@
             <div class="contenedor-inputs">
                 <input type="text" name="nombreUsuario" placeholder="Nombre Usuario" class="input-100" required>
                 <input type="password" name="contrasenya" placeholder="Password" class="input-100" required>
-                <input type="text" name="cuenta_bank" placeholder="Cuenta Bancaria" class="input-100" required>                
+                <input type="text" name="cuenta_bank" placeholder="Cuenta Bancaria" class="input-100" required>
+                <input type="text" name="perfil" placeholder="Perfil" class="input-100" required>                
                 <input type="submit" value="Registrar" class="btn-enviar" name="submit">
                 <div id="errores"></div>
             </div>

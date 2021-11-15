@@ -22,14 +22,13 @@
 
                 $datos = getUser($nombreUsuario);
                 if($datos){
-                    $contrasenyaEncri = $datos["contrasenya"];
-                    $retorno = password_verify($contrasenya,$contrasenyaEncri);
+                    
+                    $retorno = password_verify($contrasenya,$datos["contrasenya"]);
+                    
                     if($retorno){
                         session_start();
-                        $_SESSION['nombreUsuario'] = $datos['nombreUsuario'];
-                        $_SESSION['perfil'] = $esAdmin;
-                        
                         $esAdmin = $datos["perfil"];
+                        $_SESSION['perfil'] = $esAdmin;
                         if( $esAdmin == "admin"){
 
                             header("location: admin.php");
